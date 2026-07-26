@@ -1,0 +1,963 @@
+/* ===================================================
+   RESET
+=================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#06010f;
+    color:#fff;
+}
+
+/* ===================================================
+   FONDO
+=================================================== */
+
+#background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+    radial-gradient(circle at top,#35125c 0%,#12011f 40%,#05010d 100%);
+
+    z-index:-5;
+
+}
+
+#background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:url("fotos/foto1.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    opacity:.16;
+
+    animation:cambiarFondo 28s infinite ease-in-out;
+
+}
+
+/* ===================================================
+   OSCURECER FONDO
+=================================================== */
+
+#overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    z-index:-4;
+
+}
+
+/* ===================================================
+   ESTRELLAS
+=================================================== */
+
+#stars{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-3;
+
+}
+
+#stars::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+    radial-gradient(white 1px,transparent 1px),
+
+    radial-gradient(#ffc9ff 1px,transparent 1px),
+
+    radial-gradient(#9cc7ff 1px,transparent 1px);
+
+    background-size:
+
+    170px 170px,
+
+    240px 240px,
+
+    320px 320px;
+
+    opacity:.8;
+
+    animation:moverEstrellas 90s linear infinite;
+
+}
+
+/* ===================================================
+   PARTÍCULAS
+=================================================== */
+
+#particles{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-2;
+
+}
+
+/* ===================================================
+   PANTALLAS
+=================================================== */
+
+.screen{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:1s;
+
+}
+
+.screen.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+    pointer-events:auto;
+
+}
+
+}
+
+/* ===================================================
+   HERO
+=================================================== */
+
+.hero{
+
+    text-align:center;
+
+    animation:fadeUp 1.5s;
+
+    padding:20px;
+
+}
+
+.small-title{
+
+    font-size:24px;
+
+    color:#ead8ff;
+
+}
+
+.hero h1{
+
+    font-size:82px;
+
+    margin:20px 0;
+
+    color:#ffffff;
+
+    text-shadow:
+
+    0 0 15px #ff73cb,
+
+    0 0 40px #ff73cb;
+
+}
+
+.hero h2{
+
+    font-size:42px;
+
+    color:#ffd8ff;
+
+}
+
+.subtitle{
+
+    margin-top:20px;
+
+    font-size:23px;
+
+    color:#f7eaff;
+
+}
+
+/* ===================================================
+   BOTÓN
+=================================================== */
+
+button{
+
+    margin-top:45px;
+
+    padding:18px 45px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:22px;
+
+    color:white;
+
+    background:
+
+    linear-gradient(135deg,#ff4aa0,#ff86d3);
+
+    transition:.35s;
+
+}
+
+button:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+
+    0 0 20px #ff4aa0,
+
+    0 0 40px #ff4aa0;
+
+}
+
+/* ===================================================
+   ANIMACIONES BASE
+=================================================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(35px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes moverEstrellas{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(-700px);
+
+    }
+
+}
+
+@keyframes cambiarFondo{
+
+    0%{
+
+        background-image:url("fotos/foto1.jpg");
+
+    }
+
+    25%{
+
+        background-image:url("fotos/foto2.jpg");
+
+    }
+
+    50%{
+
+        background-image:url("fotos/foto3.jpg");
+
+    }
+
+    75%{
+
+        background-image:url("fotos/foto4.jpg");
+
+    }
+
+    100%{
+
+        background-image:url("fotos/foto1.jpg");
+
+    }
+
+}
+
+/* ===================================================
+   SOBRE
+=================================================== */
+
+#sobreScreen{
+
+    #sobreScreen.active,
+#cartaScreen.active,
+#galeriaScreen.active{
+
+    pointer-events:auto;
+
+}
+
+}
+
+#sobre{
+
+    position:relative;
+
+    width:360px;
+
+    height:240px;
+
+    cursor:pointer;
+
+    transition:transform .6s ease;
+
+}
+
+#sobre:hover{
+
+    transform:scale(1.04);
+
+}
+
+.cuerpo{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:180px;
+
+    background:linear-gradient(180deg,#f7bfd7,#f2a7ca);
+
+    border-radius:0 0 14px 14px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.35);
+
+}
+
+.frente{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    height:180px;
+
+    background:#ffc7dd;
+
+    clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);
+
+}
+
+.tapa{
+
+    position:absolute;
+
+    width:0;
+
+    height:0;
+
+    border-left:180px solid transparent;
+
+    border-right:180px solid transparent;
+
+    border-top:120px solid #ff8fbc;
+
+    transform-origin:top;
+
+    transition:transform .8s ease;
+
+    z-index:5;
+
+}
+
+#sobre.abierto .tapa{
+
+    transform:rotateX(180deg);
+
+}
+
+.textoSobre{
+
+    position:absolute;
+
+    bottom:70px;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:white;
+
+    z-index:6;
+
+    text-shadow:0 0 10px rgba(0,0,0,.35);
+
+}
+
+/* ===================================================
+   CARTA
+=================================================== */
+
+#cartaScreen{
+
+    pointer-events:none;
+
+}
+
+.carta{
+
+    width:min(850px,90vw);
+
+    min-height:520px;
+
+    background:#fffdf8;
+
+    border-radius:24px;
+
+    padding:55px;
+
+    color:#444;
+
+    box-shadow:
+
+    0 25px 60px rgba(0,0,0,.45);
+
+    transform:translateY(40px);
+
+    opacity:0;
+
+    transition:1s;
+
+}
+
+#cartaScreen.active .carta{
+
+    transform:translateY(0);
+
+    opacity:1;
+
+}
+
+.flores{
+
+    text-align:center;
+
+    font-size:36px;
+
+    margin-bottom:15px;
+
+}
+
+.carta h1{
+
+    text-align:center;
+
+    color:#d81b60;
+
+    margin-bottom:10px;
+
+}
+
+.carta h3{
+
+    text-align:center;
+
+    color:#777;
+
+    margin-bottom:35px;
+
+}
+
+#mensaje{
+
+    font-size:23px;
+
+    line-height:2;
+
+    white-space:pre-line;
+
+}
+
+.firma{
+
+    margin-top:45px;
+
+    text-align:right;
+
+    color:#d81b60;
+
+    font-size:22px;
+
+    font-style:italic;
+
+}
+
+/* ===================================================
+   GALERÍA
+=================================================== */
+
+#galeriaScreen{
+
+    pointer-events:none;
+
+}
+
+.galeria{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:30px;
+
+    flex-wrap:wrap;
+
+    margin-top:40px;
+
+    z-index:5;
+
+}
+
+.polaroid{
+
+    width:220px;
+
+    background:white;
+
+    padding:12px 12px 30px;
+
+    border-radius:6px;
+
+    box-shadow:0 18px 40px rgba(0,0,0,.35);
+
+    transform:rotate(-3deg);
+
+    transition:.4s;
+
+}
+
+.polaroid:nth-child(even){
+
+    transform:rotate(3deg);
+
+}
+
+.polaroid:hover{
+
+    transform:scale(1.07) rotate(0deg);
+
+}
+
+.polaroid img{
+
+    width:100%;
+
+    display:block;
+
+    border-radius:4px;
+
+}
+
+#btnFinal{
+
+    margin-top:50px;
+
+    position:relative;
+
+    z-index:99999;
+
+    pointer-events:auto;
+
+}
+
+
+/* ===================================================
+   PANTALLA FINAL
+=================================================== */
+
+#finalScreen{
+
+    text-align:center;
+
+    pointer-events:none;
+
+}
+
+.finalContent{
+
+    animation:fadeUp 1.5s;
+
+}
+
+.finalContent h1{
+
+    font-size:100px;
+
+    margin-bottom:20px;
+
+    text-shadow:
+    0 0 20px #ff73cb,
+    0 0 50px #ff73cb;
+
+}
+
+.finalContent h2{
+
+    font-size:65px;
+
+    margin-bottom:20px;
+
+    color:white;
+
+}
+
+.finalContent h3{
+
+    font-size:40px;
+
+    color:#ffd8ff;
+
+    margin-bottom:30px;
+
+}
+
+.finalContent p{
+
+    font-size:24px;
+
+    max-width:700px;
+
+    margin:auto;
+
+    line-height:1.8;
+
+    color:#f4e7ff;
+
+}
+
+.finalContent h4{
+
+    margin-top:35px;
+
+    font-size:30px;
+
+    color:#ff93c7;
+
+}
+
+/* ===================================================
+   CORAZONES
+=================================================== */
+
+#heartContainer{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:999;
+
+}
+
+.heart{
+
+    position:absolute;
+
+    bottom:-50px;
+
+    animation:floatHeart linear forwards;
+
+    user-select:none;
+
+}
+
+@keyframes floatHeart{
+
+    from{
+
+        transform:
+        translateY(0)
+        rotate(0deg);
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:
+        translateY(-120vh)
+        rotate(360deg);
+
+        opacity:0;
+
+    }
+
+}
+
+/* ===================================================
+   EFECTO BRILLO
+=================================================== */
+
+.glow{
+
+    animation:glow 2s infinite alternate;
+
+}
+
+@keyframes glow{
+
+    from{
+
+        text-shadow:
+        0 0 10px #ff5fb2,
+        0 0 20px #ff5fb2;
+
+    }
+
+    to{
+
+        text-shadow:
+        0 0 25px #ff9ad4,
+        0 0 50px #ff9ad4;
+
+    }
+
+}
+
+/* ===================================================
+   SCROLL
+=================================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#ff79c8;
+
+    border-radius:20px;
+
+}
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:54px;
+
+}
+
+.hero h2{
+
+font-size:30px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+#sobre{
+
+transform:scale(.75);
+
+}
+
+.carta{
+
+width:92%;
+
+padding:30px;
+
+}
+
+.carta h1{
+
+font-size:34px;
+
+}
+
+#mensaje{
+
+font-size:18px;
+
+line-height:1.8;
+
+}
+
+.galeria{
+
+gap:18px;
+
+}
+
+.polaroid{
+
+width:160px;
+
+}
+
+.finalContent h2{
+
+font-size:42px;
+
+}
+
+.finalContent h3{
+
+font-size:28px;
+
+}
+
+.finalContent p{
+
+font-size:18px;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+.hero h2{
+
+font-size:24px;
+
+}
+
+.hero .small-title{
+
+font-size:18px;
+
+}
+
+button{
+
+font-size:18px;
+
+padding:15px 30px;
+
+}
+
+#sobre{
+
+transform:scale(.60);
+
+}
+
+.polaroid{
+
+width:140px;
+
+}
+
+.finalContent h1{
+
+font-size:70px;
+
+}
+
+.finalContent h2{
+
+font-size:34px;
+
+}
+
+.finalContent h3{
+
+font-size:22px;
+
+}
+
+}
